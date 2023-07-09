@@ -1,0 +1,37 @@
+{
+  "name": "Devcontainer Settings",
+  "dockerComposeFile": ["../docker-compose.yml", "docker-compose.yml"],
+  "service": "app",
+  "runServices": ["app"],
+  "workspaceFolder": "/app",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "aki77.rails-db-schema",
+        "bung87.rails",
+        "castwide.solargraph",
+        "Hridoy.rails-snippets",
+        "KoichiSasada.vscode-rdbg",
+        "LoranKloeze.ruby-rubocop-revived",
+        "noku.rails-run-spec-vscode",
+        "rebornix.ruby"
+      ],
+      "settings": {
+        "[ruby]": {
+          "editor.tabSize": 2,
+          "editor.formatOnSave": true
+        },
+        "ruby.intellisense": "rubyLocate",
+        "ruby.useBundler": false,
+        "ruby.format": "rubocop",
+        "ruby.lint": {
+          "rubocop": {
+            "forceExclusion": true
+          }
+        },
+        "ruby.rubocop.useBundler": false,
+        "solargraph.useBundler": false
+      }
+    }
+  }
+}

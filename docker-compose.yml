@@ -1,0 +1,36 @@
+version: "3.9"
+services:
+  app:
+    build: .
+    image: demo:1.0.0
+    command: /bin/sh -c "rails server -p 3000 -b '0.0.0.0'"
+    volumes:
+      - .:/app
+      - bundle:/usr/local/bundle
+    environment:
+      - RAILS_ENV=development
+      - APP_DEFAULT_URL_HOST=localhost
+      - APP_DEFAULT_URL_PORT=3000
+    depends_on:
+      - mysql
+    links:
+      - mysql
+    ports:
+      - "3000:3000"
+    tmpfs:
+      - /tmp
+    stdin_open: true
+    tty: true
+  mysql:
+    image: mysql:8.0
+    platform: linux/amd64
+    volumes:
+      - ./containers/mysql:/etc/mysql/conf.d/
+      - mysql:/var/lib/mysql
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+    ports:
+      - "4306:3306"
+volumes:
+  bundle:
+  mysql:
