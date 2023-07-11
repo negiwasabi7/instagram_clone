@@ -83,8 +83,6 @@ end
 
 ## 2.2 投稿(写真) (posts)
 
-**次のコマンドは実施済み。**
-
 ```bash
 make rails g model post user:references description:text
 ```
@@ -118,13 +116,6 @@ make rails g model bookmark user:references post:references
 
 ## DM (direct_messages)
 
-**次のコマンドは説明されていたとおり、実施済み。**
-
-```bash
-make rails g model direct_message user:references target:references content:text
-```
-
-**次の変更は説明されていたとおり、実施済み。**
 
 **生成されたマイグレーションファイルを以下のように変更**
 
@@ -138,6 +129,12 @@ t.references :target, foreign_key: { to_table: :users }
 
 ```bash
 make rails g model relationship follow:references follower:references content:text
+```
+
+## 2.5　マイグレーションを実施
+
+```bash
+make rails db:migrate
 ```
 
 # 3.コントローラー(画面)の作成
